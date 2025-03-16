@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen Viewer</title>
+</head>
+<body>
+    <h2>Live Screen Viewer</h2>
+    <video id="screenVideo" autoplay></video>
+
+    <script>
+        const video = document.getElementById("screenVideo");
+
+        async function getScreenStream() {
+            try {
+                const stream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+                video.srcObject = stream;
+            } catch (err) {
+                console.error("Screen sharing failed:", err);
+            }
+        }
+
+        getScreenStream();
+    </script>
+</body>
+</html>
